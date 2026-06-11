@@ -32,7 +32,7 @@ def _compor_logo(imagem_bytes: bytes, logo_bytes: bytes) -> bytes:
     logo = Image.open(io.BytesIO(logo_bytes)).convert("RGBA")
 
     # Box branco: x=55, y=55, largura=240, altura=80
-    box_x, box_y, box_w, box_h = 55, 55, 240, 80
+    box_x, box_y, box_w, box_h = 40, 40, 300, 110
 
     # Redimensiona mantendo proporção
     logo.thumbnail((box_w - 20, box_h - 20), Image.LANCZOS)
