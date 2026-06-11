@@ -35,7 +35,8 @@ def _compor_logo(imagem_bytes: bytes, logo_bytes: bytes) -> bytes:
     box_x, box_y, box_w, box_h = 40, 40, 300, 110
 
     # Redimensiona mantendo proporção
-    logo.thumbnail((box_w - 20, box_h - 20), Image.LANCZOS)
+    logo = logo.resize((box_w - 20, box_h - 20), Image.LANCZOS)
+
 
     # Centraliza dentro do box
     pos_x = box_x + (box_w - logo.width) // 2
