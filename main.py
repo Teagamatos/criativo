@@ -28,20 +28,23 @@ jobs: dict[str, dict] = {}
 # ---------------------------------------------------------------------------
 
 def _compor_logo(imagem_bytes: bytes, logo_bytes: bytes) -> bytes:
-    """Sobrepõe a logo no canto superior esquerdo da imagem."""
     imagem = Image.open(io.BytesIO(imagem_bytes)).convert("RGBA")
     logo = Image.open(io.BytesIO(logo_bytes)).convert("RGBA")
 
-    logo_max_w, logo_max_h = 260, 90
-    logo.thumbnail((logo_max_w, logo_max_h), Image.LANCZOS)
+    # Box branco: x=55, y=55, largura=240, altura=80
+    box_x, box_y, box_w, box_h = 55, 55, 240, 80
 
-    pos_x, pos_y = 45, 45
+    # Redimensiona mantendo proporção
+    logo.thumbnail((box_w - 20, box_h - 20), Image.LANCZOS)
+
+    # Centraliza dentro do box
+    pos_x = box_x + (box_w - logo.width) // 2
+    pos_y = box_y + (box_h - logo.height) // 2
 
     camada = Image.new("RGBA", imagem.size, (0, 0, 0, 0))
     camada.paste(logo, (pos_x, pos_y), logo)
 
     resultado = Image.alpha_composite(imagem, camada).convert("RGB")
-
     buffer = io.BytesIO()
     resultado.save(buffer, format="JPEG", quality=95)
     return buffer.getvalue()
