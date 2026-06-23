@@ -42,7 +42,7 @@ def _remover_fundo_claro(logo: Image.Image, tolerancia: int = 235) -> Image.Imag
     return logo
 
 
-def _compor_logo(imagem_bytes: bytes, logo_bytes: bytes, remover_fundo: bool = True) -> bytes:
+def _compor_logo(imagem_bytes: bytes, logo_bytes: bytes, remover_fundo: bool = False) -> bytes:
     """Sobrepõe a logo no canto superior esquerdo da imagem, com fundo removido."""
     imagem = Image.open(io.BytesIO(imagem_bytes)).convert("RGBA")
     logo = Image.open(io.BytesIO(logo_bytes)).convert("RGBA")
