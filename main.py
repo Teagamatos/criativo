@@ -153,7 +153,7 @@ async def compor_criativo(
     imagem: UploadFile = File(...),
     logo: UploadFile = File(...),
     task_id: str = Form(...),
-    remover_fundo: bool = Form(True)
+    remover_fundo: bool = Form(False)
 ):
     """
     Recebe imagem + logo + task_id.
