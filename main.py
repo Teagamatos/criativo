@@ -51,7 +51,7 @@ def _compor_logo(imagem_bytes: bytes, logo_bytes: bytes, remover_fundo: bool = F
         logo = _remover_fundo_claro(logo, tolerancia=235)
 
     # Box branco: x, y, largura, altura
-    box_x, box_y, box_w, box_h = 40, 40, 300, 110
+    box_x, box_y, box_w, box_h = 40, 40, 320, 130
 
     # Força redimensionar a logo para ocupar o box (com margem interna de 20px)
     largura_alvo = box_w - 20
